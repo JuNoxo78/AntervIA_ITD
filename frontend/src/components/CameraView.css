@@ -1,0 +1,178 @@
+/* --- Contenedor Principal --- */
+.camera-view {
+  flex: 1;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column; /* Columna para poner controles abajo */
+  justify-content: space-between; /* Empuja controles abajo */
+  
+  /* CAMBIO: Fondo oscuro por defecto para AMBOS modos */
+  background-color: #212529; 
+  color: #f8f9fa; /* Texto claro por defecto */
+}
+
+/* Ya no necesitamos reglas de fondo separadas para single-mode 
+  porque el fondo base ya es oscuro.
+*/
+
+/* --- Área de Contenido (flexible) --- */
+.camera-content-area {
+  flex: 1; /* Ocupa todo el espacio */
+  width: 100%;
+  overflow-y: auto;
+  display: flex;
+  padding: 0; /* Sin padding gris */
+  box-sizing: border-box;
+}
+
+/* --- Contenido en Modo Single --- */
+.camera-view.single-mode .camera-content-area {
+  justify-content: flex-start;
+  align-items: stretch; /* Estira el contenido */
+}
+
+.camera-view-container {
+  width: 100%;
+  max-width: none; /* Sin ancho máximo */
+  /* CAMBIO: Fondo de "tarjeta" oscuro */
+  background-color: #2a303a; 
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Ocupa todo el espacio */
+}
+
+.camera-view-header-main {
+  padding: 10px 15px;
+  /* CAMBIO: Fondo de cabecera oscuro */
+  background-color: #333a45; 
+  /* CAMBIO: Borde oscuro */
+  border-bottom: 1px solid #495057; 
+  font-size: 16px;
+  font-weight: 500;
+  color: #f0f0f0; /* CAMBIO: Texto claro */
+}
+
+.video-feed {
+  position: relative;
+  width: 100%;
+  background-color: #000; /* Fondo negro (se mantiene) */
+  flex: 1; /* Ocupa el espacio restante */
+}
+
+.video-feed img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.timestamp {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: 'Consolas', 'Courier New', Courier, monospace;
+}
+
+/* --- Estilos de la Cuadrícula 2x2 (Se mantienen, ya son oscuros) --- */
+.camera-grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  width: 100%;
+  gap: 2px;
+  flex: 1; 
+}
+
+.grid-item {
+  position: relative;
+  background-color: #000;
+  overflow: hidden;
+  min-height: 200px;
+}
+
+.grid-item-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.grid-item-timestamp {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 3px 6px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-family: 'Consolas', 'Courier New', monospace;
+}
+
+.empty-grid-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #2b3035;
+  color: #adb5bd;
+}
+
+.empty-grid-item p {
+  margin: 10px 0 5px 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.empty-grid-item span {
+  font-size: 14px;
+  color: #6c757d;
+}
+
+/* --- Estilos de la Barra de Controles Inferior (Se mantiene oscura) --- */
+.view-controls {
+  width: 100%;
+  background-color: #212529;
+  padding: 8px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+.control-button {
+  background-color: #343a40;
+  color: #adb5bd;
+  border: 1px solid #495057;
+  border-radius: 5px;
+  padding: 8px 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.control-button:hover {
+  background-color: #495057;
+  color: white;
+}
+
+/* CAMBIO: Botón activo en Azul Eléctrico */
+.control-button.active {
+  background-color: #00AFFF; /* Azul Eléctrico */
+  color: white;
+  border-color: #00AFFF;
+  box-shadow: 0 0 8px rgba(0, 175, 255, 0.6); /* Sombra eléctrica */
+}

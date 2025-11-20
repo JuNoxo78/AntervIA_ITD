@@ -1,0 +1,23 @@
+/* Reseteo básico */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+:root {
+  --bg-primary: #FFFFFF; 
+  --bg-secondary: #FFFFFF; 
+}
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.main-content {
+  display: flex;
+  flex: 1; /* Ocupa todo el alto restante */
+  overflow: hidden; /* Evita el scroll en el área principal */
+}

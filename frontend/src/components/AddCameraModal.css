@@ -1,0 +1,236 @@
+/* Importamos los estilos base del modal (fondo oscuro, etc.) */
+@import './AlertModal.css';
+
+/* Estilos específicos para el modal de Agregar Cámara */
+.add-camera-modal {
+  max-width: 850px; 
+  width: 90%;
+  padding: 0; 
+  /* Usamos un fondo de modal ligeramente más claro que el overlay */
+  background-color: #2a303a; 
+  border-radius: 8px; /* Aseguramos bordes redondeados */
+}
+
+/* Cabecera con Gradiente Eléctrico */
+.modal-header-gradient {
+  padding: 20px 25px;
+  /* CAMBIO: Gradiente de Rojo Eléctrico */
+  background: linear-gradient(to right, #FF0033, #c10028); 
+  color: white;
+  border-radius: 8px 8px 0 0; 
+  position: relative;
+}
+
+.modal-header-gradient h2 {
+  margin: 0 0 5px 0;
+  font-size: 20px;
+}
+
+.modal-header-gradient p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* Cuerpo del Formulario */
+.modal-form-body {
+  display: flex;
+  padding: 20px 25px;
+  gap: 25px;
+  background-color: #2a303a; /* Fondo del formulario */
+}
+
+.form-column-left {
+  flex: 1;
+}
+
+.form-column-right {
+  flex: 2; 
+}
+
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #f0f0f0; /* CAMBIO: Texto de etiqueta claro */
+  margin-bottom: 6px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  /* CAMBIO: Estilos de input para modo oscuro */
+  background-color: #333a45; 
+  border: 1px solid #505a6b;
+  color: #ffffff; 
+  border-radius: 5px;
+  box-sizing: border-box; 
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #00AFFF; /* CAMBIO: Borde azul eléctrico al enfocar */
+  box-shadow: 0 0 0 3px rgba(0, 175, 255, 0.3); /* Sombra azul */
+}
+
+
+.form-group textarea {
+  resize: vertical; 
+  min-height: 120px;
+}
+
+/* Caja de Sugerencias */
+.suggestion-box {
+  /* CAMBIO: Fondo oscuro para sugerencias */
+  background-color: #1c2026; 
+  border: 1px solid #333a45;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.suggestion-box label {
+  font-size: 13px;
+  font-weight: bold;
+  color: #ffc107; /* CAMBIO: Texto amarillo para resaltar */
+}
+
+.suggestion-items {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.suggestion-item {
+  background-color: #333a45; /* CAMBIO: Fondo de item oscuro */
+  border: 1px solid #505a6b; /* CAMBIO: Borde oscuro */
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  flex: 1;
+  transition: all 0.2s ease;
+}
+
+.suggestion-item span {
+  display: block;
+  font-size: 12px;
+  color: #a0a8b3; /* CAMBIO: Texto de URL gris claro */
+}
+
+.suggestion-item span:first-child {
+  font-weight: bold;
+  color: #00AFFF; /* CAMBIO: Texto de nombre en Azul Eléctrico */
+}
+
+.suggestion-item:hover {
+  background-color: #3d4652;
+}
+
+/* CAMBIO: Sugerencia seleccionada en Azul Eléctrico */
+.suggestion-item.selected {
+  background-color: #00AFFF;
+  border-color: #00AFFF; 
+  box-shadow: 0 0 0 2px rgba(0, 175, 255, 0.5); 
+}
+
+.suggestion-item.selected span {
+  color: #ffffff; /* Texto blanco cuando está seleccionado */
+}
+
+/* Botón Descubrir */
+.discover-group {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+/* CAMBIO: Botón Descubrir en Azul Eléctrico */
+.btn-discover {
+  background-color: #00AFFF; 
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 175, 255, 0.4);
+}
+
+.btn-discover:hover {
+  background-color: #008fcc;
+  box-shadow: 0 4px 12px rgba(0, 175, 255, 0.6);
+}
+
+/* Pie de Página (Botones) */
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 15px 25px;
+  background-color: #1c2026; /* CAMBIO: Fondo de footer oscuro */
+  border-top: 1px solid #333a45; /* CAMBIO: Borde oscuro */
+  border-radius: 0 0 8px 8px; 
+}
+
+.btn-cancel, .btn-submit {
+  padding: 10px 18px;
+  font-size: 15px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* CAMBIO: Botón Cancelar (estilo secundario oscuro) */
+.btn-cancel {
+  background-color: transparent;
+  color: #a0a8b3;
+  border: 1px solid #505a6b;
+}
+.btn-cancel:hover {
+  background-color: #333a45;
+  color: #ffffff;
+}
+
+/* CAMBIO: Botón Submit (Rojo Eléctrico) */
+.btn-submit {
+  background-color: #FF0033; 
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(255, 0, 51, 0.4);
+}
+.btn-submit:hover {
+  background-color: #D6002B;
+  box-shadow: 0 4px 12px rgba(255, 0, 51, 0.6);
+}
+
+
+/* Botón de cerrar (se mantiene bien sobre el gradiente) */
+.add-camera-modal .close-button {
+  position: absolute;
+  top: 15px; 
+  right: 20px; 
+  color: white; 
+  font-size: 28px; 
+  z-index: 1; 
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.add-camera-modal .close-button:hover {
+  opacity: 1;
+}

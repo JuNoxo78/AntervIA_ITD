@@ -1,0 +1,214 @@
+/* Fondo oscuro que cubre toda la pantalla (se mantiene) */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75); /* Un poco más oscuro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; 
+}
+
+/* Contenido del Modal */
+.modal-content {
+  /* CAMBIO: Fondo oscuro */
+  background-color: #2a303a; 
+  border-radius: 8px;
+  width: 90%;
+  max-width: 800px; 
+  overflow: hidden; 
+  /* CAMBIO: Sombra de "brillo" (glow) en lugar de sombra oscura */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  position: relative;
+  border: 1px solid #3d4652; /* Borde sutil */
+}
+
+.modal-header {
+  padding: 15px 20px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #1c2026; /* Separador oscuro */
+}
+
+/* Colores de la cabecera (usamos los colores eléctricos) */
+.modal-header.alert-high {
+  /* CAMBIO: Rojo Eléctrico */
+  background-color: #FF0033; 
+}
+.modal-header.alert-medium {
+  background-color: #f0ad4e; /* Amarillo (se mantiene) */
+}
+.modal-header.alert-low {
+  background-color: #5cb85c; /* Verde (se mantiene) */
+}
+
+/* CAMBIO: Añadimos "glow" al modal según el riesgo */
+.alert-high .modal-content {
+  box-shadow: 0 0 20px rgba(255, 0, 51, 0.5);
+  border-color: #FF0033;
+}
+.alert-medium .modal-content {
+  box-shadow: 0 0 20px rgba(240, 173, 78, 0.4);
+  border-color: #f0ad4e;
+}
+.alert-low .modal-content {
+  box-shadow: 0 0 20px rgba(92, 184, 92, 0.4);
+  border-color: #5cb85c;
+}
+
+
+.modal-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.close-button {
+  cursor: pointer;
+  font-size: 28px; /* Más grande */
+  color: white; 
+  opacity: 0.8;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.close-button:hover {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-description {
+  font-size: 14px;
+  /* CAMBIO: Texto claro */
+  color: #b0b0b0; 
+  margin-bottom: 15px;
+}
+
+/* Contenedor del reproductor de video (se mantiene) */
+.video-player-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 */
+  background-color: #000; 
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.alert-video-placeholder, .alert-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Controles de video (overlay) (se mantiene) */
+.video-controls-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%); 
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-sizing: border-box;
+}
+
+.video-timeline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-size: 12px;
+}
+
+.timeline-slider {
+  flex: 1; 
+  -webkit-appearance: none; 
+  appearance: none;
+  height: 6px;
+  background: #555; 
+  outline: none;
+  opacity: 0.7;
+  transition: opacity .2s;
+  border-radius: 3px;
+}
+
+.timeline-slider:hover {
+  opacity: 1;
+}
+
+/* CAMBIO: Slider en Azul Eléctrico */
+.timeline-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #00AFFF; /* Azul Eléctrico */
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 175, 255, 0.7);
+}
+
+.timeline-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #00AFFF; /* Azul Eléctrico */
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 175, 255, 0.7);
+}
+
+.playback-controls {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  gap: 15px; 
+  color: white;
+}
+
+.control-icon {
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.control-icon:hover {
+  /* CAMBIO: Hover en Azul Eléctrico */
+  color: #00AFFF; 
+}
+
+.play-pause {
+  font-size: 28px; 
+}
+
+/* CAMBIO: Botón "Live" en Azul Eléctrico */
+.live-button {
+  background-color: #00AFFF; /* Azul Eléctrico */
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 5px; 
+  margin-left: auto; 
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 175, 255, 0.4);
+}
+
+.live-button:hover {
+  background-color: #008fcc; /* Azul más oscuro */
+  box-shadow: 0 4px 12px rgba(0, 175, 255, 0.6);
+}

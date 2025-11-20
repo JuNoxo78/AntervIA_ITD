@@ -1,0 +1,234 @@
+.sidebar {
+  width: 240px;
+  background-color: #1c2026; /* Fondo oscuro (se mantiene) */
+  border-right: 1px solid #333a45; 
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box; 
+  color: #f0f0f0; 
+}
+
+/* --- Top Icons (Video y Bell) --- */
+.top-icons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #333a45;
+  padding-bottom: 15px;
+}
+
+.icon-wrapper {
+  padding: 10px; 
+  border-radius: 8px; 
+  margin: 0 5px; 
+  background-color: #2a303a; 
+  border: 1px solid #3d4652; 
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a0a8b3; 
+  transition: all 0.2s ease-in-out; 
+}
+
+.icon-wrapper:hover {
+  background-color: #3d4652; 
+  color: #ffffff; 
+}
+
+/* === CAMBIO 1: Iconos activos en Azul Eléctrico === */
+.icon-wrapper.active {
+  background-color: #00AFFF; /* Azul Eléctrico */
+  color: white;
+  border-color: #00AFFF;
+  box-shadow: 0 0 12px rgba(0, 175, 255, 0.7); /* Sombra Eléctrica */
+}
+
+/* --- Título de Sección (Mis Cámaras, Alertas) --- */
+.sidebar-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: #f0f0f0; 
+  margin-bottom: 15px; 
+  text-transform: uppercase; 
+  padding: 0 5px; 
+}
+
+/* --- Lista de Cámaras --- */
+.camera-list {
+  flex: 1; 
+  overflow-y: auto; 
+  padding-right: 5px; 
+}
+
+.camera-preview {
+  margin-bottom: 12px; 
+  border: 2px solid transparent;
+  border-radius: 8px; 
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #2a303a; 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+  transition: all 0.2s ease-in-out;
+}
+
+.camera-preview:hover {
+  transform: translateY(-2px); 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
+}
+
+.camera-preview img {
+  width: 100%;
+  height: 90px; 
+  object-fit: cover; 
+  display: block;
+}
+
+.camera-preview:not(.selected) img {
+  filter: grayscale(80%) brightness(0.7); 
+  opacity: 0.8;
+}
+
+/* === CAMBIO 2: Borde de cámara seleccionada en Azul Eléctrico === */
+.camera-preview.selected {
+  border-color: #00AFFF; /* Azul Eléctrico (para consistencia) */
+  box-shadow: 0 0 0 2px rgba(0, 175, 255, 0.6), 0 4px 10px rgba(0,0,0,0.3); 
+}
+
+.camera-label {
+  padding: 10px 12px;
+  background-color: #333a45; 
+  font-size: 13px;
+  font-weight: 500;
+  color: #f0f0f0; 
+  border-top: 1px solid #3d4652; 
+}
+
+/* --- Estilos para la Lista de Alertas --- */
+
+.alerts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Un poco más de espacio */
+  padding-right: 5px; 
+}
+
+.alert-item {
+  padding: 12px 15px;
+  border-radius: 8px; 
+  /* CAMBIO: Quitamos el borde izquierdo */
+  /* border-left-width: 5px; */
+  
+  /* CAMBIO: Añadimos un borde sutil alrededor */
+  border: 1px solid #3d4652; 
+  
+  background-color: #2a303a; 
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15); 
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* CAMBIO: Efecto de brillo (glow) por riesgo */
+.alert-item.alert-high {
+  border-color: #FF0033; /* Borde Rojo Eléctrico */
+  /* Sombra/Brillo Rojo */
+  box-shadow: 0 0 8px rgba(255, 0, 51, 0.5), 0 1px 3px rgba(0,0,0,0.15); 
+}
+.alert-item.alert-medium {
+  border-color: #f0ad4e; /* Borde Amarillo */
+  /* Sombra/Brillo Amarillo */
+  box-shadow: 0 0 8px rgba(240, 173, 78, 0.4), 0 1px 3px rgba(0,0,0,0.15); 
+}
+.alert-item.alert-low {
+  border-color: #5cb85c; /* Borde Verde */
+  /* Sombra/Brillo Verde */
+  box-shadow: 0 0 8px rgba(92, 184, 92, 0.4), 0 1px 3px rgba(0,0,0,0.15); 
+}
+
+/* CAMBIO: Efecto hover eléctrico */
+.alert-item:hover {
+  transform: translateY(-2px); 
+  border-color: #00AFFF; /* Borde Azul Eléctrico al pasar el ratón */
+  /* Sombra/Brillo Azul */
+  box-shadow: 0 0 10px rgba(0, 175, 255, 0.7); 
+}
+
+.alert-title {
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 4px;
+  color: #FFFFFF; /* Texto blanco (como pediste) */
+}
+
+/* (Eliminamos las reglas de color específicas para el título) */
+
+.alert-description {
+  font-size: 14px;
+  color: #b0b0b0; /* Descripción en gris claro (como pediste) */
+}
+
+/* --- Ajuste del layout del Sidebar (mantener) --- */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.sidebar-main-content {
+  flex: 1; 
+  overflow-y: auto; 
+  display: flex;
+  flex-direction: column;
+}
+
+.camera-list, .alerts-list {
+  flex: 1;
+}
+
+/* === CAMBIO 4: Botón "Agregar Cámara" en Rojo Eléctrico === */
+.add-camera-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px; 
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px; 
+  font-size: 15px;
+  font-weight: bold;
+  color: #FFFFFF; /* Letras Blancas (pedido) */
+  background-color: #FF0033; /* Rojo Eléctrico (pedido) */
+  border: none;
+  border-radius: 8px; 
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-sizing: border-box; 
+  box-shadow: 0 4px 12px rgba(255, 0, 51, 0.5); /* Sombra Roja */
+}
+
+.add-camera-button:hover {
+  background-color: #D6002B; /* Rojo más oscuro al pasar el ratón */
+  transform: translateY(-2px); 
+  box-shadow: 0 6px 16px rgba(255, 0, 51, 0.7); /* Sombra más grande */
+}
+
+/* --- Estilos de Scrollbar (se mantienen) --- */
+.camera-list::-webkit-scrollbar,
+.alerts-list::-webkit-scrollbar {
+  width: 8px;
+}
+.camera-list::-webkit-scrollbar-track,
+.alerts-list::-webkit-scrollbar-track {
+  background: #2a303a;
+  border-radius: 10px;
+}
+.camera-list::-webkit-scrollbar-thumb,
+.alerts-list::-webkit-scrollbar-thumb {
+  background: #505a6b;
+  border-radius: 10px;
+}
+.camera-list::-webkit-scrollbar-thumb:hover,
+.alerts-list::-webkit-scrollbar-thumb:hover {
+  background: #6a768a;
+}
