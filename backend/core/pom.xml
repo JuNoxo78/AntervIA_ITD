@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.5.7</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.antervia</groupId>
+	<artifactId>apiAlerta</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>apiAlerta</name>
+	<description>API Gateway para alertas de seguridad en tiempo real.</description>
+	
+	<properties>
+		<java.version>17</java.version>
+		<!-- 1. Definición de la versión de Lombok para consistencia y evitar el error 'version cannot be empty' -->
+		<lombok.version>1.18.32</lombok.version> 
+	</properties>
+	
+	<dependencies>
+		<!-- Spring Data JPA (incluye JDBC): Para la persistencia de datos -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<!-- Spring Web: Para los controladores REST y el servidor embebido -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<!-- Spring WebSocket: Para la comunicación en tiempo real con STOMP -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
+		
+		<!-- Base de Datos en Memoria H2: Solo para desarrollo y pruebas -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		
+		<!-- 2. Lombok: Simplifica las clases de modelo -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+			<optional>true</optional>
+		</dependency>
+		
+		<!-- Spring Boot Test: Para pruebas unitarias -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- NOTA: Se eliminó la dependencia de 'org.postgresql' para simplificar el entorno de H2. -->
+		<!-- NOTA: Se eliminó la dependencia de 'spring-boot-starter-jdbc' porque 'spring-boot-starter-data-jpa' ya la incluye. -->
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- 3. Plugin de Compilador: Configuración CRUCIAL para el Annotation Processor de Lombok. -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<!-- SE AÑADE LA VERSIÓN EXPLÍCITA PARA RESOLVER EL ERROR -->
+							<version>${lombok.version}</version> 
+						</path>
+					</annotationProcessorPaths>
+				</configuration>
+			</plugin>
+			
+			<!-- Plugin de Spring Boot: Genera el JAR ejecutable -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

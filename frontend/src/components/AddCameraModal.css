@@ -5,10 +5,14 @@
 .add-camera-modal {
   max-width: 850px; 
   width: 90%;
+  max-height: 90vh; /* Limita la altura máxima al 90% del viewport */
   padding: 0; 
   /* Usamos un fondo de modal ligeramente más claro que el overlay */
   background-color: #2a303a; 
   border-radius: 8px; /* Aseguramos bordes redondeados */
+  display: flex;
+  flex-direction: column; /* Permite que el contenido se organice verticalmente */
+  overflow: hidden; /* Evita que el contenido se desborde del modal */
 }
 
 /* Cabecera con Gradiente Eléctrico */
@@ -38,6 +42,8 @@
   padding: 20px 25px;
   gap: 25px;
   background-color: #2a303a; /* Fondo del formulario */
+  overflow-y: auto; /* Habilita scroll vertical cuando sea necesario */
+  flex: 1; /* Permite que el formulario ocupe el espacio disponible */
 }
 
 .form-column-left {
@@ -182,7 +188,8 @@
   padding: 15px 25px;
   background-color: #1c2026; /* CAMBIO: Fondo de footer oscuro */
   border-top: 1px solid #333a45; /* CAMBIO: Borde oscuro */
-  border-radius: 0 0 8px 8px; 
+  border-radius: 0 0 8px 8px;
+  flex-shrink: 0; /* Evita que el footer se reduzca cuando hay scroll */
 }
 
 .btn-cancel, .btn-submit {
@@ -233,4 +240,55 @@
 
 .add-camera-modal .close-button:hover {
   opacity: 1;
+}
+
+/* Estilos responsivos para pantallas pequeñas */
+@media (max-width: 768px) {
+  .modal-form-body {
+    flex-direction: column; /* Columnas apiladas verticalmente en móviles */
+    gap: 15px;
+  }
+  
+  .add-camera-modal {
+    width: 95%;
+    max-height: 95vh;
+  }
+  
+  .modal-header-gradient {
+    padding: 15px 20px;
+  }
+  
+  .modal-header-gradient h2 {
+    font-size: 18px;
+  }
+  
+  .modal-header-gradient p {
+    font-size: 13px;
+  }
+  
+  .suggestion-items {
+    flex-direction: column; /* Sugerencias apiladas verticalmente */
+  }
+  
+  .modal-footer {
+    padding: 12px 20px;
+  }
+}
+
+@media (max-height: 700px) {
+  .add-camera-modal {
+    max-height: 95vh;
+  }
+  
+  .modal-header-gradient {
+    padding: 12px 20px;
+  }
+  
+  .modal-form-body {
+    padding: 15px 20px;
+  }
+  
+  .form-group textarea {
+    min-height: 80px; /* Reduce la altura del textarea en pantallas pequeñas */
+  }
 }
